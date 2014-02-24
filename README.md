@@ -30,6 +30,7 @@ How it works ?
 --------------
 
 Files are:
+
 1. *keyboard.sh*: script which send key typed to the server. It takes in argument the IP and the port of the server to connect to.
 2. *server.sh*: The most important script, it receive key typed by the two gamers, compute all collisions operations and sned the resulting matrix, back to gamers on the other port. (So it should take both players IP to work)
 3. *display.sh*: basically just receive the matrix calculated by the server and print it using dialog command. It takes the port on which listening in argument.
@@ -47,6 +48,7 @@ How to play ?
 -------------
 
 Play is quite tricky because scripts should be launched in a specific order.
+
 1. First the server should be launched by one of the two peers.
 2. The two players should have the display script running waiting for connection.
 3. The first player should launch keyboard with the right server ip and port
