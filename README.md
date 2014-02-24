@@ -1,9 +1,18 @@
+
+![Game image](https://raw.github.com/RobinDavid/Bash-network-game/master/snapshot.jpg)
+
 Bash-network-game
 =================
 
-This project is a fully working 2 player network game written in bash. It intents to show the possibilities of bash which is not a simple script program.
-You can find a complete blog post about it here: http://robindavid.comli.com/network-game-in-bash/
+This project is 2 player network proof of concept game written in bash.
 The goal of this project is to show the capabilities of bash by doing a game fully in bash.
+
+Features used:
+* two dimension arrays emulation
+* network communication (with netcat)
+* multiple file descriptors usage
+* process communication using fifo files
+* "self forking"
 
 Requirements
 ------------
@@ -20,11 +29,19 @@ ZSQD are the keyboard keys to move and the arrows to shot (front, back, left or 
 How it works ?
 --------------
 
-The only things to know is that is bash so the code is quite dirty but working (most of the case :p).
+Files are:
+1. *keyboard.sh*: script which send key typed to the server. It takes in argument the IP and the port of the server to connect to.
+2. *server.sh*: The most important script, it receive key typed by the two gamers, compute all collisions operations and sned the resulting matrix, back to gamers on the other port. (So it should take both players IP to work)
+3. *display.sh*: basically just receive the matrix calculated by the server and print it using dialog command. It takes the port on which listening in argument.
+
 Basically there is the server script that should be launch by one of the two players.
 Then players should have two consoles one to launch keyboard that will listen for keys and display
 that will shows the map.
 Note: Display is a server and the server script will connect to it to stream the map to the two players.
+
+By default ports used are 7001 and 7002 for players keyboards and the server connect to the port 7003 and 7004 of the players.
+
+![process interaction](https://raw.github.com/RobinDavid/Bash-network-game/master/archi.jpg)
 
 How to play ?
 -------------
